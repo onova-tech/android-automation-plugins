@@ -34,6 +34,24 @@ scripts/check-plugins.sh            # every plugin: validate, test, build into b
 Or download `agp-<version>.zip` from the [releases](https://github.com/onova-tech/android-automation-plugins/releases),
 unzip it and run `bin/agp`.
 
+### Devcontainer and devices
+
+The devcontainer has only the `adb` client. It reaches the phone or emulator through the **adb
+server on the host** (`ADB_SERVER_SOCKET=tcp:host.docker.internal:5037` in
+`.devcontainer/devcontainer.json`). By default that server listens on `127.0.0.1` only, so start
+it on all interfaces, **on the host**:
+
+```bash
+adb kill-server
+adb -a nodaemon server start      # foreground; or `adb -a start-server` in the background
+```
+
+Then, inside the container, `adb devices` lists the host's devices (e.g. `emulator-5554`). If it
+does not, allow TCP port 5037 from the Docker network in the host firewall.
+
+With `-a`, anyone on your local network can reach the adb server: use it on a trusted network
+only, and restart it without `-a` (`adb kill-server && adb start-server`) when you are done.
+
 ## agp
 
 ```bash
