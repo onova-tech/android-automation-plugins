@@ -1,0 +1,8 @@
+skill: read_chat
+description: Read the last messages of a chat
+params:
+  phone: {}
+steps:
+  - call: { flow: open_chat, with: { phone: "${phone}" } }
+  - read_list: { role: text, max: 5, scroll: false, into: messages }
+  - return: "${messages}"

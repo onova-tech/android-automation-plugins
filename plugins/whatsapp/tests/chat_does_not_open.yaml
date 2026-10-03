@@ -1,0 +1,8 @@
+test: gives up when WhatsApp does not open the chat
+skill: send
+args: { phone: "5511999", text: "oi" }
+# no transitions: nothing appears after the link is opened
+expect:
+  status: failed
+  error: E_TIMEOUT
+  interactions: ["open_url:https://wa.me/5511999?text=oi"]

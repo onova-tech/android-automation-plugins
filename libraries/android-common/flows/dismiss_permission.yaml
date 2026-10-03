@@ -1,0 +1,8 @@
+# Accepts a runtime-permission dialog if one is showing; does nothing otherwise.
+# The calling plugin needs com.android.permissioncontroller in capabilities.ui_automation.
+flow: dismiss_permission
+steps:
+  - if:
+      exists: { target: permission_allow }
+      then:
+        - click: { target: permission_allow }

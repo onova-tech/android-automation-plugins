@@ -1,0 +1,11 @@
+test: dismisses a "what's new" dialog and still sends
+skill: send
+args: { phone: "5511999", text: "oi" }
+transitions:
+  - { after: open_url, screen: chat_with_dialog.xml }
+  - { after: click, label: "Agora não", screen: chat_prefilled.xml }
+  - { after: click, label: "Enviar", screen: chat_sent.xml }
+expect:
+  status: succeeded
+  return: "Sent to *****99"
+  interactions: ["open_url:https://wa.me/5511999?text=oi", "click:Agora não", "click:Enviar"]

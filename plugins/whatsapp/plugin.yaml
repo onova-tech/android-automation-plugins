@@ -1,0 +1,19 @@
+schema: 1
+plugin:
+  id: whatsapp
+  name: WhatsApp
+  version: 0.1.0
+  category: messaging
+  default_language: pt
+
+app:
+  package: com.whatsapp
+  tested_versions: []          # none yet: targets below are not validated on the real app
+
+capabilities:
+  ui_automation: [com.whatsapp, com.android.permissioncontroller]   # the second one: to accept permission dialogs
+  deeplinks: ["https://wa.me/*"]
+  sms_reply: true
+
+libraries:
+  android-common: 0.1.0

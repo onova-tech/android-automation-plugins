@@ -1,0 +1,72 @@
+# Builds agp against the pinned engine (engine/ submodule) and validates, replay-tests and builds
+# every plugin in plugins/. On every merge to main, publishes agp and the (unsigned) packages as a
+# GitHub release (v0.1.<run number>).
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  plugins:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: true
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+      - uses: gradle/actions/setup-gradle@v4
+      - name: Build agp
+        run: ./gradlew --no-daemon :agp:installDist :agp:distZip
+      - name: Validate, test and build every plugin
+        run: scripts/check-plugins.sh dist
+      - uses: actions/upload-artifact@v4
+        with:
+          name: packages
+          path: |
+            dist/
+            agp/build/distributions/agp.zip
+
+  release:
+    needs: plugins
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      VERSION: 0.1.${{ github.run_number }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: true
+      - uses: actions/download-artifact@v4
+        with:
+          name: packages
+          path: artifacts
+      - name: Collect files
+        run: |
+          mkdir release
+          cp artifacts/agp/build/distributions/agp.zip "release/agp-$VERSION.zip"
+          for f in artifacts/dist/*.agp; do cp "$f" "release/$(basename "$f" .agp)-$VERSION.agp"; done
+          (cd release && sha256sum * > SHA256SUMS)
+      - name: Publish release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          engine=$(git -C engine rev-parse --short HEAD)
+          gh release create "v$VERSION" release/* \
+            --target "$GITHUB_SHA" \
+            --title "v$VERSION" \
+            --notes "agp and plugin packages built with engine onova-tech/android-automation-app@$engine. Packages are unsigned." \
+            --generate-notes

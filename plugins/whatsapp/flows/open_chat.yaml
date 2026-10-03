@@ -1,0 +1,9 @@
+flow: open_chat
+params:
+  phone: {}
+  text: { default: "" }
+steps:
+  - open_url: { url: "https://wa.me/${phone}?text=${text|urlencode}" }
+  - call: { flow: android-common.dismiss_permission }
+  - wait_for: { target: message_box, timeout: 8000 }
+  - assert: { screen_is: chat_open, message: "WhatsApp did not open the chat" }

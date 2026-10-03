@@ -1,0 +1,10 @@
+test: sends a message through the wa.me link
+skill: send
+args: { phone: "5511999", text: "oi" }
+transitions:
+  - { after: open_url, screen: chat_prefilled.xml }
+  - { after: click, label: "Enviar", screen: chat_sent.xml }
+expect:
+  status: succeeded
+  return: "Sent to *****99"
+  interactions: ["open_url:https://wa.me/5511999?text=oi", "click:Enviar"]

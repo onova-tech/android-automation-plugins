@@ -1,0 +1,7 @@
+test: reads the last messages of a chat
+skill: read_chat
+args: { phone: "5511999" }
+transitions:
+  - { after: open_url, screen: chat_sent.xml }
+expect:
+  status: succeeded

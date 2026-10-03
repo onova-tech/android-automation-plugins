@@ -1,0 +1,11 @@
+test: sends on a phone set to English, with a changed send-button id
+skill: send
+args: { phone: "5511999", text: "hi" }
+language: en
+transitions:
+  - { after: open_url, screen: chat_prefilled_en.xml }
+  - { after: click, label: "Send", screen: chat_sent_en.xml }
+expect:
+  status: succeeded
+  return: "Sent to *****99"
+  interactions: ["open_url:https://wa.me/5511999?text=hi", "click:Send"]
