@@ -20,5 +20,8 @@
   },
   "runArgs": [
     "--add-host=host.docker.internal:host-gateway"
-  ]
+  ],
+  "remoteEnv": {
+    "PATH": "${containerEnv:PATH}:${containerEnv:HOME}/.local/bin"
+  }
 }
