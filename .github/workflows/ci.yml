@@ -31,7 +31,7 @@ jobs:
         run: ./gradlew --no-daemon :agp:installDist :agp:distZip
       - name: Validate, test and build every plugin
         run: scripts/check-plugins.sh dist
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: packages
           path: |
