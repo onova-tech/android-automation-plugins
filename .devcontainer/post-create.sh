@@ -6,6 +6,11 @@ cd "$(dirname "$0")/.."
 
 # adb client only (to capture screen dumps); devices are reached through the host adb server
 # via ADB_SERVER_SOCKET, see README of the app repo.
+# The base image ships a Yarn apt source whose GPG key has expired, which makes apt-get update fail;
+# Yarn isn't needed here, so disable it.
+if [ -f /etc/apt/sources.list.d/yarn.list ]; then
+  sudo mv /etc/apt/sources.list.d/yarn.list /etc/apt/sources.list.d/yarn.list.disabled
+fi
 sudo apt-get update -qq && sudo apt-get install -y -qq adb
 
 git submodule update --init --recursive
