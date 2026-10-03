@@ -9,3 +9,11 @@ updates:
     directory: /
     schedule:
       interval: monthly
+  # Kotlin plugin used to build agp; keep it at or above the engine's Kotlin version
+  - package-ecosystem: gradle
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      kotlin:
+        patterns: ["org.jetbrains.kotlin*"]
