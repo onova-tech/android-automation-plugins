@@ -1,0 +1,7 @@
+commands:
+  - verb: SEND
+    skill: send
+    args: "<phone>: <text>"
+  - verb: READ
+    skill: read_chat
+    args: "<phone>"

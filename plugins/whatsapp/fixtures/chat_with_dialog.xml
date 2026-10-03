@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
+<!-- SYNTHETIC WhatsApp-like chat screen with a 'what's new' dialog on top for replay tests. Ids and layout are guesses, not a real dump. -->
+<hierarchy rotation="0">
+  <node index="0" text="" resource-id="" class="android.widget.FrameLayout" package="com.whatsapp" content-desc="" clickable="false" scrollable="false" focused="false" bounds="[0,0][1080,2340]">
+    <node index="0" text="" resource-id="com.whatsapp:id/back" class="android.widget.ImageButton" package="com.whatsapp" content-desc="Voltar" clickable="true" scrollable="false" focused="false" bounds="[0,80][120,200]" />
+    <node index="1" text="Maria Silva" resource-id="com.whatsapp:id/conversation_contact_name" class="android.widget.TextView" package="com.whatsapp" content-desc="" clickable="true" scrollable="false" focused="false" bounds="[130,90][700,190]" />
+    <node index="2" text="" resource-id="com.whatsapp:id/conversation_list" class="androidx.recyclerview.widget.RecyclerView" package="com.whatsapp" content-desc="" clickable="false" scrollable="true" focused="false" bounds="[0,210][1080,2080]">
+      <node index="0" text="Chego em 10 minutos" resource-id="com.whatsapp:id/message_text" class="android.widget.TextView" package="com.whatsapp" content-desc="" clickable="true" scrollable="false" focused="false" bounds="[400,1700][1050,1800]" />
+      <node index="1" text="Ok, te espero" resource-id="com.whatsapp:id/message_text" class="android.widget.TextView" package="com.whatsapp" content-desc="" clickable="true" scrollable="false" focused="false" bounds="[30,1850][600,1950]" />
+    </node>
+    <node index="3" text="oi" resource-id="com.whatsapp:id/entry" class="android.widget.EditText" package="com.whatsapp" content-desc="" clickable="true" scrollable="false" focused="true" bounds="[120,2110][900,2250]" />
+    <node index="4" text="" resource-id="com.whatsapp:id/send" class="android.widget.ImageButton" package="com.whatsapp" content-desc="Enviar" clickable="true" scrollable="false" focused="false" bounds="[930,2110][1070,2250]" />
+    <node index="5" text="" resource-id="android:id/content" class="android.widget.FrameLayout" package="com.whatsapp" content-desc="" clickable="false" scrollable="false" focused="false" bounds="[90,900][990,1400]">
+      <node index="0" text="Novidades no WhatsApp" resource-id="com.whatsapp:id/title" class="android.widget.TextView" package="com.whatsapp" content-desc="" clickable="false" scrollable="false" focused="false" bounds="[130,950][950,1050]" />
+      <node index="1" text="Agora não" resource-id="android:id/button2" class="android.widget.Button" package="com.whatsapp" content-desc="" clickable="true" scrollable="false" focused="false" bounds="[500,1250][700,1350]" />
+      <node index="2" text="Saiba mais" resource-id="android:id/button1" class="android.widget.Button" package="com.whatsapp" content-desc="" clickable="true" scrollable="false" focused="false" bounds="[720,1250][950,1350]" />
+    </node>
+  </node>
+</hierarchy>

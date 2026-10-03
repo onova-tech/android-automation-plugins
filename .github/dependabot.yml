@@ -1,0 +1,11 @@
+version: 2
+updates:
+  # Engine (android-automation-app) pinned as the engine/ submodule
+  - package-ecosystem: gitsubmodule
+    directory: /
+    schedule:
+      interval: weekly
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly

@@ -1,0 +1,12 @@
+skill: send
+description: Send a text message to a phone number
+risk: 3
+params:
+  phone: {}
+  text: {}
+steps:
+  - call: { flow: open_chat, with: { phone: "${phone}", text: "${text}" } }
+  - click:
+      target: send_button
+      expect: { not_exists: { target: { hints: { text: "${text}" }, role: edit_text } } }
+  - return: "Sent to ${phone|mask}"

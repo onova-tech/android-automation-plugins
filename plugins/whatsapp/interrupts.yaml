@@ -1,0 +1,6 @@
+# Dialogs that can show up on top of a chat. Rules may only click, go back, wait or log.
+rules:
+  - name: whats_new_dialog
+    when: { exists: { target: { hints: { text: "${t.not_now}" }, role: button } } }
+    do:
+      - click: { target: { hints: { text: "${t.not_now}" }, role: button } }

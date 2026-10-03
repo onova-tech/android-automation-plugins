@@ -1,0 +1,14 @@
+# Elements of an open chat. Hints are guesses until validated on the real app;
+# the intent, role and region let the resolver find them if the hints are wrong.
+# Texts come from i18n/<language>.yaml, chosen by the phone's language.
+message_box:
+  intent: "${t.message_box_intent}"
+  role: edit_text
+  hints: { resource_id: "com.whatsapp:id/entry" }
+  region: bottom
+
+send_button:
+  intent: "${t.send_intent}"
+  role: button
+  hints: { resource_id: "com.whatsapp:id/send", content_description: "${t.send_button}" }
+  region: bottom-right

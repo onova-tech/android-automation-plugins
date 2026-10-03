@@ -1,0 +1,9 @@
+test: reports when the message stays in the text box after Send
+skill: send
+args: { phone: "5511999", text: "oi" }
+transitions:
+  - { after: open_url, screen: chat_prefilled.xml }
+  # no transition on click: the screen does not change, so the post-condition fails
+expect:
+  status: failed
+  error: E_VERIFY_FAILED

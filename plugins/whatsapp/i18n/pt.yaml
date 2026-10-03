@@ -1,0 +1,4 @@
+message_box_intent: "campo para digitar a mensagem"
+send_intent: "botão que envia a mensagem"
+send_button: "Enviar"
+not_now: "Agora não"

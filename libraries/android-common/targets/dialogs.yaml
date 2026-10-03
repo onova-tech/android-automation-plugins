@@ -1,0 +1,5 @@
+# Android's runtime-permission dialog (system UI)
+permission_allow:
+  intent: "permitir"
+  role: button
+  hints: { resource_id: "com.android.permissioncontroller:id/permission_allow_button" }
