@@ -26,7 +26,7 @@ jobs:
         with:
           distribution: temurin
           java-version: 17
-      - uses: gradle/actions/setup-gradle@v4
+      - uses: gradle/actions/setup-gradle@v6
       - name: Build agp
         run: ./gradlew --no-daemon :agp:installDist :agp:distZip
       - name: Validate, test and build every plugin
