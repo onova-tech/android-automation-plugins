@@ -1,0 +1,10 @@
+build/
+.gradle/
+.idea/
+*.iml
+local.properties
+.DS_Store
+# built packages
+*.agp
+# agp developer signing keys (private) — never commit
+*.key
